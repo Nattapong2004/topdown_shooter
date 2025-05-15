@@ -1,49 +1,60 @@
+using System.Net.NetworkInformation;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System.Collections;
+
+
 
 public class PlayerController : MonoBehaviour
 {
     public float speed;
-
-    // [6] set the range of the player's movement in x-axis
+    private float currentSpeed;
     public float xRange = 10;
-
-    // [8] declare Projectile prefab variable
     public GameObject projectilePrefab;
 
-    private float horizontalInput;
 
-    // [1] declare a private InputAction variable
+   
+    public int maxBulletCount = 10;
+    public float bulletRegenerateCooldown = 1f;
+     private Coroutine speedBoostRoutine;
+    
+
+    private float horizontalInput;
     private InputAction moveAction;
-    // [10] declare a private InputAction variable for shooting
     private InputAction shootAction;
 
     private void Awake()
     {
-        // [2] find the action by name
-        // this is to optimize the search for the action
         moveAction = InputSystem.actions.FindAction("Move");
-
-        // [11] find the action by name
         shootAction = InputSystem.actions.FindAction("Shoot");
+        currentSpeed = speed;
+    }
+    public void ApplySpeedBoost(float multiplier, float duration)
+    {
+        // หยุด Coroutine ที่กำลังทำงานอยู่ (ถ้ามี)
+        if (speedBoostRoutine != null)
+        {
+            StopCoroutine(speedBoostRoutine);
+        }
+
+        // เริ่ม Coroutine ใหม่
+        speedBoostRoutine = StartCoroutine(SpeedBoostRoutine(multiplier, duration));
+    }
+
+    private IEnumerator SpeedBoostRoutine(float multiplier, float duration)
+    {
+        currentSpeed = speed * multiplier;
+        yield return new WaitForSeconds(duration);
+        currentSpeed = speed;
+        speedBoostRoutine = null;
     }
 
     // Update is called once per frame
     void Update()
     {
-        // [3] use input system to get horizontal input
         horizontalInput = moveAction.ReadValue<Vector2>().x;
-
-        // [4] move the player
         transform.Translate(horizontalInput * speed * Time.deltaTime * Vector3.right);
 
-        // [5] keep the player inbounds
-        // if (transform.position.x < -10)
-        // {
-        //     transform.position = new Vector3(-10, transform.position.y, transform.position.z);
-        // }
-
-        // [7] keep the player inbounds using xRange variable
         if (transform.position.x < -xRange)
         {
             transform.position = new Vector3(-xRange, transform.position.y, transform.position.z);
@@ -53,11 +64,9 @@ public class PlayerController : MonoBehaviour
             transform.position = new Vector3(xRange, transform.position.y, transform.position.z);
         }
 
-        // [12] check if the player is shooting
         if (shootAction.triggered)
         {
-            // [13] spawn a projectile
-            Instantiate(projectilePrefab, transform.position, projectilePrefab.transform.rotation);
+            Instantiate(projectilePrefab, transform.position, transform.rotation);
         }
     }
 }

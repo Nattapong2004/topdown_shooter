@@ -1,12 +1,19 @@
+using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+
 
 public class WaveController : MonoBehaviour
 {
+
     public Transform[] spawnPoints;
 
     private Wave currentWave;
     private int enemiesSpawned = 0;
     private float nextSpawnTime = 0f;
+
+    
 
     public bool IsComplete()
     {
