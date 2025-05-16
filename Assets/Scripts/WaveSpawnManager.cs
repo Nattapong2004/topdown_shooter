@@ -15,6 +15,7 @@ public class WaveSpawnManager : MonoBehaviour
 
     void Start()
     {
+        Time.timeScale = 1;
         waveController.StartWave(waveConfigurations[currentWave]);
         waveEndTime = Time.time + waveConfigurations[currentWave].waveInterval;
         panel.SetActive(false); 
@@ -29,9 +30,9 @@ public class WaveSpawnManager : MonoBehaviour
         {
             currentWave++;
             if (currentWave >= waveConfigurations.Length)
-            {
+            { 
                
-                Invoke("CompleteLevel",10f);
+                Invoke("CompleteLevel",5f);
             }
 
             else

@@ -3,18 +3,19 @@ using UnityEngine;
 public class ItemSpawnManager : MonoBehaviour
 {
     public GameObject[] itemPrefabs; 
-
     public Transform[] spawnPoints;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    
     void Start()
     {
-        Invoke("CompleteLevel", 10f);
+        InvokeRepeating("Spawn", 2f,5f);
     }
 
-    // Update is called once per frame
-    void Update()
+    void Spawn()
     {
-        
+        int spawnIdx = Random.Range(0, spawnPoints.Length);
+        int itemIdx = Random.Range(0, itemPrefabs.Length);
+
+        Instantiate(itemPrefabs[itemIdx], spawnPoints[spawnIdx].position, Quaternion.identity);
     }
 }

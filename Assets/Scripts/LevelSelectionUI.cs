@@ -6,24 +6,23 @@ using UnityEngine.UI;
 public class LevelSelectionUI : MonoBehaviour
 {
     [SerializeField] private Button[] levelButtons;
-    //[SerializeField] private GameObject lockedIconPrefab;
+    
 
     void Start()
     {
+        Time.timeScale = 1;
         for (int i = 0; i < levelButtons.Length; i++)
         {
             int levelIndex = i + 1;
 
             if (!MainManager.IsLevelUnlocked(levelIndex))
             {
-                // ´èÒ¹·ÕèÂÑ§äÁè»Å´ÅçÍ¡
-                //Instantiate(lockedIconPrefab, levelButtons[i].transform);
+                
                 levelButtons[i].interactable = false;
-                //levelButtons[i].GetComponentInChildren<TMP_Text>().text = "ÅçÍ¡ÍÂÙè";
+                
             }
             else
             {
-                // ´èÒ¹·Õè»Å´ÅçÍ¡áÅéÇ
                 levelButtons[i].onClick.AddListener(() => LoadLevel(levelIndex));
   
             }
