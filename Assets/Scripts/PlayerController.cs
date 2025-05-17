@@ -12,13 +12,6 @@ public class PlayerController : MonoBehaviour
     public float xRange = 10;
     public GameObject projectilePrefab;
 
-
-   
-    public int maxBulletCount = 10;
-    public float bulletRegenerateCooldown = 1f;
-    
-    
-
     private float horizontalInput;
     private InputAction moveAction;
     private InputAction shootAction;

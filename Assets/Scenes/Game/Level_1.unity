@@ -149,6 +149,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemPrefabs:
+  - {fileID: 7975177794748047302, guid: 5c83223d683994e6fbd908740cc02e7d, type: 3}
   - {fileID: 5610766470319578148, guid: 723e19796ffde43658815d20ffb3e8c0, type: 3}
   spawnPoints:
   - {fileID: 207485033}
@@ -384,7 +385,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &300804669
 RectTransform:
   m_ObjectHideFlags: 0
@@ -402,8 +403,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -200, y: 60}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: -300, y: 80}
+  m_SizeDelta: {x: 500, y: 105.3651}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &300804670
 MonoBehaviour:
@@ -516,7 +517,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &329401077
 RectTransform:
   m_ObjectHideFlags: 0
@@ -832,8 +833,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 80
-  m_fontSizeBase: 80
+  m_fontSize: 120
+  m_fontSizeBase: 120
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1758,8 +1759,6 @@ MonoBehaviour:
   speed: 20
   xRange: 15
   projectilePrefab: {fileID: 1713378943238565647, guid: 86a9ca02af4c0244ba8a704be35c6180, type: 3}
-  maxBulletCount: 10
-  bulletRegenerateCooldown: 1
 --- !u!65 &1818353607
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1947,8 +1946,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 60
-  m_fontSizeBase: 60
+  m_fontSize: 120
+  m_fontSizeBase: 120
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

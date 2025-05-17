@@ -17,7 +17,7 @@ public class EnemySlowItem : MonoBehaviour
 
     private void ApplySlowToAllEnemies()
     {
-        MoveForwardDog[] allEnemies = FindObjectsOfType<MoveForwardDog>();
+        MoveForwardDog[] allEnemies = FindObjectsByType<MoveForwardDog>(FindObjectsSortMode.None);
         foreach (MoveForwardDog enemy in allEnemies)
         {
             enemy.ApplySlow(slowMultiplier, duration);
